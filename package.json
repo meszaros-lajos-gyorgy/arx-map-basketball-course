@@ -1,0 +1,41 @@
+{
+  "name": "arx-map-basketball-course",
+  "version": "1.0.0",
+  "description": "A simple map for Arx Fatalis where you can practice your basketball skills with a metal chest",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "generate": "tsc && tsc-alias && node ./dist/src/index.js",
+    "rungame": "arx-level-generator --rungame",
+    "rungame:noclip": "arx-level-generator --rungame --noclip",
+    "dev": "npm run generate && npm run rungame",
+    "dev:noclip": "npm run generate && npm run rungame:noclip",
+    "prod": "export mode=\"production\" && npm run generate && npm run rungame",
+    "release": "export uncompressedFTS=\"false\" && export outputDir=\"./output\" && export mode=\"production\" && rm -rf cache && rm -rf output && npm run generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meszaros-lajos-gyorgy/arx-map-basketball-course.git"
+  },
+  "keywords": [
+    "arx-fatalis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meszaros-lajos-gyorgy/arx-map-basketball-course/issues"
+  },
+  "homepage": "https://github.com/meszaros-lajos-gyorgy/arx-map-basketball-course#readme",
+  "dependencies": {
+    "arx-convert": "^10.1.1",
+    "arx-level-generator": "^21.0.0-alpha.24",
+    "three": "^0.167.0"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^22.1.0",
+    "@types/three": "^0.167.0",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.5.4"
+  }
+}
