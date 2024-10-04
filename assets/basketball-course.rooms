@@ -1,0 +1,47 @@
+define bbcourse-bottom {
+  floor arx [WOOD]_FLOOR1
+  wall arx AliciaRoom_Plinthe
+}
+define bbcourse-top {
+  wall arx ALICIAROOM_MUR01
+  ceiling arx ALICIAROOM_MUR01
+}
+define window {
+  floor arx ALICIAROOM_MUR01
+  ceiling arx ALICIAROOM_MUR01
+  wall arx ALICIAROOM_MUR01
+  wall-east arx [GLASS]_GLASS01
+  wall-west arx [GLASS]_GLASS01
+}
+
+room add 700 100 1200 bbcourse-bottom
+room add 700 300 1200 bbcourse-top y++
+with light
+
+cursor save bbcourse
+
+room add 0 0 50 default x+ y+ z+
+room add 20 100 300 window x++ y+ z--
+with light
+
+cursor restore bbcourse
+
+room add 0 0 50 default x+ y+ z-
+room add 20 100 300 window x++ y+ z++
+with light
+
+cursor restore bbcourse
+
+room add 0 0 50 default x- y+ z+
+room add 20 100 300 window x-- y+ z--
+with light
+
+cursor restore bbcourse
+
+room add 0 0 50 default x- y+ z-
+room add 20 100 300 window x-- y+ z++
+with light
+
+cursor restore bbcourse
+
+room add 700 50 1200 bbcourse-top y++
