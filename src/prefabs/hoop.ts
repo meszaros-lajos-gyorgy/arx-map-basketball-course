@@ -1,8 +1,8 @@
-import { ArxPolygonFlags } from 'arx-convert/types'
-import { Entity, Material, Texture, Vector3, Zone } from 'arx-level-generator'
+import { Entity, Vector3 } from 'arx-level-generator'
 import { createBox } from 'arx-level-generator/prefabs/mesh'
 import { ControlZone } from 'arx-level-generator/scripting/properties'
 import { createZone } from 'arx-level-generator/tools'
+import { toArxCoordinateSystem } from 'arx-level-generator/tools/mesh'
 import { applyTransformations } from 'arx-level-generator/utils'
 import { MathUtils, Mesh, MeshBasicMaterial, TorusGeometry } from 'three'
 import { backPlateTexture, beamTexture, hoopTexture } from '@/textures.js'
@@ -13,11 +13,10 @@ type createHoopProps = {
 }
 
 const createRing = (position: Vector3) => {
-  const geometry = new TorusGeometry(100, 10, 5, 4)
-  const texture = Material.fromTexture(hoopTexture, {
-    flags: ArxPolygonFlags.DoubleSided,
-  })
-  const material = new MeshBasicMaterial({ map: texture })
+  let geometry = new TorusGeometry(100, 10, 5, 4)
+  geometry = toArxCoordinateSystem(geometry)
+
+  const material = new MeshBasicMaterial({ map: hoopTexture })
   const mesh = new Mesh(geometry, material)
 
   mesh.rotateZ(MathUtils.degToRad(45))
